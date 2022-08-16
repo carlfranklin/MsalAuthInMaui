@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MsalAuthInMaui.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Image
+                Source="dotnet_bot.png"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                HeightRequest="200"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Hello, World!"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Welcome to .NET Multi-platform App UI"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+            <HorizontalStackLayout 
+                HorizontalOptions="Center">
+                <Button x:Name="LoginButton"
+                        Text="Log in"
+                        SemanticProperties.Hint="Log in"
+                        Clicked="OnLoginButtonClicked"
+                        HorizontalOptions="Center"
+                        Margin="8,0,8,0" />
+
+                <Button x:Name="LogoutButton"
+                        Text="Log out"
+                        SemanticProperties.Hint="Log out"
+                        Clicked="OnLogoutButtonClicked"
+                        HorizontalOptions="Center"
+                        Margin="8,0,8,0" />
+            </HorizontalStackLayout>
+
+            <Button x:Name="GetWeatherForecastButton"
+                    Text="Get Weather Forecast"
+                    SemanticProperties.Hint="Get weather forecast data"
+                    Clicked="OnGetWeatherForecastButtonClicked"
+                    HorizontalOptions="Center"
+                    IsEnabled="{Binding IsLoggedIn}"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
