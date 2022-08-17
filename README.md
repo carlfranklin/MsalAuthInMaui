@@ -25,6 +25,8 @@
 
 ## Introduction
 
+> Watch the How-To video at https://thedotnetshow.com Look for episode 24.
+
 In this episode, we are going to build a secure `ASP.NET Core Web API` application, and deploy it to `Azure`. Then, we are going to build a `.NET Multi-platform App UI (.NET MAUI)` application, and I am going to show you how you can leverage the`Microsoft Authentication Library (MSAL)` for `.NET` to get an access token, which we are going to use to call the Web API application.
 
 The `Microsoft Authentication Library (MSAL)` allows you to acquire tokens from the `Microsoft identity platform`, authenticate users, and call secure web APIs not only from .NET, but from multiple platforms such as JavaScript, Java, Python, Android, and iOS.
@@ -33,7 +35,7 @@ You can find more information about `MSAL` here [Overview of the Microsoft Authe
 
 End results will look like this:
 
-![MsalAuthInMaui app](images/Screenshot_1660592983.png)  
+<img src="images/Screenshot_1660592983.png" alt="MsalAuthInMaui app" style="zoom: 25%;" />  
 
 Let's get started.
 
@@ -53,11 +55,13 @@ For this demo, we are going to use the latest version of [Visual Studio 2022](ht
 
 In order to build ASP.NET Core Web API applications, the `ASP.NET and web development` workload needs to be installed. In order to build `.NET MAUI` applications, you also need the `.NET Multi-platform App UI development` workload, so if you do not have them installed let's do that now.
 
+Here's a screen shot of the Visual Studio Installer.
+
 ![ASP.NET and web development](images/34640f10f2d813f245973ddb81ffa401c7366e96e625b3e59c7c51a78bbb2056.png)  
 
 ## Demo
 
-In the following demo we will perform the following actions:
+In the demo we will perform the following actions:
 
 1. Create a `ASP.NET Core Web API` application
 2. Secure the `ASP.NET Core Web API` application
@@ -71,7 +75,7 @@ In the following demo we will perform the following actions:
 
 As you can see there are many steps in this demo, so let's get to it.
 
-### Secure ASP.NET Core Web API Application
+### Secure an ASP.NET Core Web API Application
 
 In this demo, we are going to start by creating an `ASP.NET Core Web API ` application using the default template, which will not be secure. We are going to make it secure by using the `Microsoft identity` platform.
 
@@ -79,9 +83,11 @@ We will create an `Azure AD B2C` app registration to provide an authentication f
 
 And finally, we will deploy the `ASP.NET Core Web API` application to Azure.
 
-#### ASP.NET Core Web API Application
+#### Create an ASP.NET Core Web API Application
 
 ![Create a new ASP.NET Core Web API project](images/e735adc8086673e19e0b451f7e5530b1b15d2813ed7cb7baa561628baae02fd6.png)  
+
+Name it `SecureWebApi`
 
 ![Configure your new project](images/326751c8c729d6f3f4df012ecc1b25e50842d88fb060779a7e0cb65f678013f6.png)  
 
@@ -101,7 +107,7 @@ Expand `GET /weatherforecast`, click on `Try it out`, then on `Execute`.
 
 We get data, so it is working, but it is not secure.
 
-#### Secure ASP.NET Core Web API
+#### Secure the ASP.NET Core Web API
 
 Let's make our `ASP.NET Core Web API` app secure.
 
@@ -371,6 +377,8 @@ Right-click on the *SecureWebApi.csproj* file, and select `Publish...`, then fol
 
 ![API Management](images/d0eea2f4bdf432973fed496c68cb489782aa8dfe6d67c6ba67250fe4f200c5f2.png)  
 
+Make sure to select `Skip this step` for the API Management option.
+
 ![Finish](images/e82d9caabdc2288cf07bc393551a493d83923af8db36c81c678d3422645bfebb.png)  
 
 ![Publish](images/8c56a403962cf16a530588b93dfe76748740a8528027137f84a839605f3990b2.png)  
@@ -446,6 +454,8 @@ Add a new `.NET MAUI app` project to the solution.
 
 ![Add a new .NET MAUI app project](images/2522f8ca1ef05439e997da100ad376d2f863ef7befa1e99d52f914a1f1cd127f.png)  
 
+Name it `MsalAuthInMaui`
+
 ![Configure the new .NET MAUI app project](images/83a150a8736379e6cce915d9644e6f720917bf3ec9b14b55346ed075367048e4.png)  
 
 ![Additional information](images/4470596dd3ae300cd60c60cd1bef93f9b3fdfaefb85c963259e0013cbd9643ed.png)  
@@ -479,7 +489,9 @@ Right click on the `MsalAuthInMaui` project, and set it as the Startup project.
 
 ![Startup project](images/4a75c45d1de162ab689f1c5a18e2c44d9d70fd5cce7a4f5162d2b8596e633137.png)  
 
-Change your deployment setting from `Windows Machine` to an `Android Emulator` option, that you may have already setup. In my case, I will select `Pixel XL - API 31 (Android 12.0 - API 31)
+Change your deployment setting from `Windows Machine` to an `Android Emulator` option, that you may have already setup. In my case, I will select `Pixel XL - API 31 (Android 12.0 - API 31).
+
+If you have an Android phone connected to your machine, you can use that as well.
 
 ![Android emulator](images/704f859caf0aa8def3683dbcd2bb01620f6f7a05fdf453df52a8f1b467865144.png)  
 
@@ -643,9 +655,9 @@ namespace MsalAuthInMaui.MsalClient
 }
 ```
 
-![MSALClient](images/8fc3d550a71b8424125d875e05c9517a903e558d0d0ecc521704b444f12623bd.png)  
+![image-20220817095742009](C:\Users\carl\AppData\Roaming\Typora\typora-user-images\image-20220817095742009.png) 
 
->:point_up: The `MSALClient` code, is based on the [Microsoft Authentication Library (MSAL) for .NET, UWP, NetCore, Xamarin Android and iOS](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) repo.
+>:point_up: The `MsalClient` code, is based on the [Microsoft Authentication Library (MSAL) for .NET, UWP, NetCore, Xamarin Android and iOS](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) repo.
 
 Open the *MainPage.xaml.cs* file, and replace the code with the following:
 
@@ -841,7 +853,7 @@ Type the text in notepad, in my case `msauth://com.companyname.msalauthinmaui/sn
 
 Save, and give it another try. The app should display the access token.
 
-![Access Token](images/c9e2fc654bbe8fb9ed032ed37c5ddf4a9fc7a83aad3f8be29d905b4b545021b1.png)  
+<img src="images/c9e2fc654bbe8fb9ed032ed37c5ddf4a9fc7a83aad3f8be29d905b4b545021b1.png" alt="Access Token" style="zoom: 67%;" />  
 
 #### Call our secure `ASP.NET Core Web API` application from our `.NET MAUI` application
 
@@ -997,11 +1009,11 @@ namespace MsalAuthInMaui
 
 Let's run the app one more time, and if you are already logged in, it should log you in silently automatically as soon as you open the app, and the access token should be display.
 
-![MsalAuthInMaui app](images/Screenshot_1660592983.png)  
+<img src="images/Screenshot_1660592983.png" alt="MsalAuthInMaui app" style="zoom:25%;" />  
 
 Then click the `Get Weather Forecast` button, and you should be able to call our Secure Web API, and the data should display:
 
-![WeatherForecast Data](images/Screenshot_1660593176.png)  
+<img src="images/Screenshot_1660593176.png" alt="WeatherForecast Data" style="zoom:25%;" />  
 
 ## Summary
 
@@ -1017,11 +1029,11 @@ The complete code for this demo can be found in the link below.
 
 ## Resources
 
-| Resource Title                                                                          | Url                                                                                          |
-| --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| The .NET Show with Carl Franklin                                                        | <https://www.youtube.com/playlist?list=PL8h4jt35t1wgW_PqzZ9USrHvvnk8JMQy_>                   |
-| Download .NET                                                                           | <https://dotnet.microsoft.com/en-us/download>                                                |
-| Overview of the Microsoft Authentication Library (MSAL)                                 | <https://docs.microsoft.com/en-us/azure/active-directory/develop/msal-overview>              |
-| Minimal APIs overview                                                                   | <https://docs.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis?view=aspnetcore-6.0> |
-| Microsoft Authentication Library (MSAL) for .NET, UWP, NetCore, Xamarin Android and iOS | <https://github.com/AzureAD/microsoft-authentication-library-for-dotnet>                     |
-| Microsoft identity platform code samples                                                | https://docs.microsoft.com/en-us/azure/active-directory/develop/sample-v2-code               |
+| Resource Title                                               | Url                                                          |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| The .NET Show with Carl Franklin                             | https://thedotnetshow.com                                    |
+| Download .NET                                                | <https://dotnet.microsoft.com/en-us/download>                |
+| Overview of the Microsoft Authentication Library (MSAL)      | <https://docs.microsoft.com/en-us/azure/active-directory/develop/msal-overview> |
+| Minimal APIs overview                                        | <https://docs.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis?view=aspnetcore-6.0> |
+| Microsoft Authentication Library (MSAL) for .NET, UWP, .NET Core, Xamarin Android and iOS | <https://github.com/AzureAD/microsoft-authentication-library-for-dotnet> |
+| Microsoft identity platform code samples                     | https://docs.microsoft.com/en-us/azure/active-directory/develop/sample-v2-code |
