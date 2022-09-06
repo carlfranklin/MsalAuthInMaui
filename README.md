@@ -256,13 +256,13 @@ Open the *appsettings.json* file, and add the following section above the `"Logg
 
 ```json
   "AzureAd": {
-    "Instance": "",
-    "Domain": "",
-    "TenantId": "",
-    "ClientId": "",
-    "CallbackPath": "",
-    "Scopes": "",
-    "ClientSecret": "",
+    "Instance": "https://login.microsoftonline.com/",
+    "Domain": "REPLACE-WITH-YOUR-DOMAIN",
+    "TenantId": "REPLACE-WITH-YOUR-TENANT-ID",
+    "ClientId": "REPLACE-WITH-YOUR-CLIENT-ID",
+    "CallbackPath": "/signin-oidc",
+    "Scopes": "access_as_user",
+    "ClientSecret": "REPLACE-WITH-YOUR-CLIENT-SECRET",
     "ClientCertificates": []
   },
 ```
@@ -444,7 +444,7 @@ Then keep the `Delegated permissions` selected, check the `access_as_user` permi
 
 <!-- ![picture 51](images/798ce251a9786e35f1d0f18e1d4ff8230009b66cd13893a1771ffd8b4810b972.png)  
 
-![picture 52](images/73ff77def522298123eced44033cc47182128b3a724fad42fee97ff6d97cc3f2.png)   -->
+![picture 52](images/73ff77def522298123eced44033cc47182128b3a724fad42fee97ff6d97cc3f2.png)   
 
 ### Create a `.NET MAUI` application
 
@@ -497,7 +497,7 @@ If you have an Android phone connected to your machine, you can use that as well
 
 >:blue_book: Creating Android emulators or iOS Simulators is out-of-scope for this demo.
 
-#### Configure our `.NET MAUI` application to use `MSAL.NET` to authenticate users and get an access token
+### Configure our `.NET MAUI` application to use `MSAL.NET` to authenticate users and get an access token
 
 `MSAL.NET` is part of the `Microsoft identity platform`, so let's add a reference to that.
 
@@ -654,8 +654,6 @@ namespace MsalAuthInMaui.MsalClient
     }
 }
 ```
-
-![image-20220817095742009](C:\Users\carl\AppData\Roaming\Typora\typora-user-images\image-20220817095742009.png) 
 
 >:point_up: The `MsalClient` code, is based on the [Microsoft Authentication Library (MSAL) for .NET, UWP, NetCore, Xamarin Android and iOS](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) repo.
 
