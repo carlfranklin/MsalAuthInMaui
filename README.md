@@ -872,7 +872,7 @@ Open *MainPage.xaml*, and add the button below the `HorizontalStackLayout` conta
 					IsEnabled="{Binding IsLoggedIn}"/>
 ```
 
-Update the *MainPage.cs* file with the following code:
+Update the *MainPage.xaml.cs* file with the following code:
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -975,7 +975,7 @@ namespace MsalAuthInMaui
                 var client = new HttpClient();
 
                 // Create the request.
-                var message = new HttpRequestMessage(HttpMethod.Get, {"https://msalsecurewebapi.azurewebsites.net/weatherforecast}");
+                var message = new HttpRequestMessage(HttpMethod.Get, "https://msalsecurewebapi.azurewebsites.net/weatherforecast");
 
                 // Add the Authorization Bearer header.
                 message.Headers.Add("Authorization", $"Bearer {accessToken}");
